@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Dilemma Awareness | Digital Detox</title>
+    
+    <!-- Use Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script type="module" src="/src/main.js"></script>
+</head>
+
+<body class="relative">
+
+    <!-- Hero glow background orb -->
+    <div class="hero-orb"></div>
+
+    <div id="app" class="min-h-screen flex flex-col relative z-10">
+        <!-- Navigation -->
+        <header
+            class="card sticky top-0 z-20 shadow-lg bg-slate-950/90 backdrop-blur-md rounded-none border-b border-slate-800/80">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4
+                       flex flex-col sm:flex-row items-center sm:items-center sm:justify-between gap-3">
+
+                <!-- Logo/Icon -->
+                <div class="flex items-center space-x-2 text-xl sm:text-2xl font-bold text-white
+                           w-full sm:w-auto justify-center sm:justify-start">
+                    <div class="h-9 w-9 sm:h-10 sm:w-10 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-yellow-300
+                               flex items-center justify-center shadow-lg shadow-amber-500/40">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-950 animate-pulse-icon"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M21 0H3C1.346 0 0 1.346 0 3v18c0 1.654 1.346 3 3 3h18c1.654 0 3-1.346 3-3V3c0-1.654-1.346-3-3-3zm-9.006 19.34a2.502 2.502 0 0 1-2.5-2.5c0-1.381 1.119-2.5 2.5-2.5 1.381 0 2.5 1.119 2.5 2.5 0 1.381-1.119 2.5-2.5 2.5zM19 14H5V5h14v9z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col leading-tight">
+                        <span>Digital Detox</span>
+                        <span class="text-[0.65rem] sm:text-xs text-slate-400 tracking-wide uppercase">
+                            Social Media Awareness
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Nav Links -->
+                <div class="flex items-center flex-wrap gap-2 text-xs sm:text-sm md:text-base
+                           justify-center sm:justify-end w-full sm:w-auto">
+                    <button type="button" data-page="home"
+                        class="nav-link nav-link-base text-gray-200 hover:text-amber-300 transition">
+                        Home
+                    </button>
+                    <button type="button" data-scroll-target="about-us-page"
+                        class="nav-link nav-link-base text-gray-200 hover:text-amber-300 transition">
+                        What is it?
+                    </button>
+                    <button type="button" data-page="quiz"
+                        class="nav-link nav-link-base text-gray-200 hover:text-amber-300 transition">
+                        Addiction Test
+                    </button>
+                    <button type="button" data-page="contact"
+                        class="nav-link nav-link-base text-gray-200 hover:text-amber-300 transition">
+                        Contact
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-12 sm:space-y-16">
+
+            <!-- Home Page -->
+            <section id="home-page" class="page-content space-y-12 sm:space-y-14">
+                <!-- Hero -->
+                <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center fade-in-up">
+                    <!-- Hero text -->
+                    <div class="space-y-4 sm:space-y-6">
+                        <p
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs sm:text-sm border border-emerald-500/30">
+                            <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            100% private · No judgment · Just help
+                        </p>
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
+                            Reclaim Your Focus.
+                            <span
+                                class="block mt-1 bg-gradient-to-r from-amber-300 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
+                                Break the Scroll.
+                            </span>
+                        </h1>
+                        <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl">
+                            Instagram 📸, YouTube 🎧, Reels 🎥, WhatsApp 💬 — these apps are built to keep you hooked.
+                            This space helps you pause, understand what’s really happening in your brain, and gently
+                            build
+                            a calmer, healthier relationship with your phone.
+                        </p>
+
+                        <!-- Hero CTAs -->
+                        <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
+                            <button onclick="showPage('quiz')"
+                                class="primary-btn text-slate-950 font-bold py-3 px-8 rounded-full shadow-xl text-sm sm:text-base md:text-lg flex items-center gap-2">
+                                📝 Take the Mobile Addiction Test
+                            </button>
+                            <button onclick="showPage('contact')"
+                                class="px-5 py-2.5 rounded-full border border-slate-600 text-xs sm:text-sm md:text-base text-slate-200 bg-slate-950/40 hover:border-amber-400 hover:text-amber-300 hover:bg-slate-900/80 transition flex items-center gap-2">
+                                💬 Talk to a human
+                            </button>
+                        </div>
+
+                        <!-- Social app chips -->
+                        <div class="flex flex-wrap items-center gap-2 text-[0.7rem] sm:text-xs text-slate-400 pt-3">
+                            <span
+                                class="px-2 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 flex items-center gap-1">
+                                <span>📸</span><span>Instagram & Reels</span>
+                            </span>
+                            <span
+                                class="px-2 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 flex items-center gap-1">
+                                <span>▶️</span><span>YouTube & Shorts</span>
+                            </span>
+                            <span
+                                class="px-2 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 flex items-center gap-1">
+                                <span>💬</span><span>WhatsApp & Chats</span>
+                            </span>
+                            <span
+                                class="px-2 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 flex items-center gap-1">
+                                <span>🧠</span><span>Your Focus & Sleep</span>
+                            </span>
+                        </div>
+
+                        <!-- Hero stats -->
+                        <div class="grid grid-cols-3 gap-3 max-w-xs text-xs sm:text-sm text-slate-300 pt-4">
+                            <div class="flex flex-col">
+                                <span class="text-lg sm:text-xl font-semibold text-amber-300">3 mins</span>
+                                <span class="text-slate-400">to finish the test</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-lg sm:text-xl font-semibold text-emerald-300">0%</span>
+                                <span class="text-slate-400">public sharing</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-lg sm:text-xl font-semibold text-sky-300">24/7</span>
+                                <span class="text-slate-400">self-reflection</span>
+                            </div>
+                        </div>
+
+                        <!-- Scroll hint -->
+                        <div class="pt-4 flex items-center gap-3 text-xs text-slate-400">
+                            <div class="scroll-indicator">
+                                <div class="scroll-indicator-dot"></div>
+                            </div>
+                            <span>Scroll to see how social media is designed to keep you hooked ↓</span>
+                        </div>
+                    </div>
+
+                    <!-- Hero phone visual -->
+                    <div class="relative flex justify-center lg:justify-end mt-4 lg:mt-0">
+                        <div class="hero-phone animate-floating">
+                            <div class="hero-phone-inner">
+                                <div class="hero-phone-notch"></div>
+                                <div class="hero-phone-screen">
+                                    <div class="flex justify-between items-center mb-3 text-[0.65rem] text-slate-200">
+                                        <span
+                                            class="px-2 py-1 rounded-full bg-slate-900/70 border border-slate-600/70 flex items-center gap-1">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                                            Online
+                                        </span>
+                                        <span class="text-slate-400">Digital Detox • Today</span>
+                                    </div>
+
+                                    <div class="space-y-3 text-xs text-slate-100">
+                                        <div class="flex gap-2">
+                                            <div
+                                                class="flex-1 rounded-2xl bg-slate-900/70 border border-slate-700/70 px-3 py-2">
+                                                <p class="text-[0.7rem] text-slate-300">
+                                                    You’ve checked your phone <span
+                                                        class="text-amber-300 font-semibold">27 times</span> today.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-2 justify-end">
+                                            <div
+                                                class="max-w-[80%] rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 px-3 py-2 shadow-md">
+                                                <p class="text-[0.7rem] font-semibold">
+                                                    Ready to see if it’s actually controlling you?
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 rounded-xl bg-slate-900/70 border border-slate-700/70 p-2.5">
+                                            <div class="flex items-center justify-between text-[0.7rem]">
+                                                <span class="text-slate-300">Daily screen time</span>
+                                                <span class="font-semibold text-amber-300">5h 12m</span>
+                                            </div>
+                                            <div class="mt-1 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                                                <div
+                                                    class="h-full w-[68%] rounded-full bg-gradient-to-r from-emerald-400 via-amber-400 to-red-400">
+                                                </div>
+                                            </div>
+                                            <p class="mt-2 text-[0.68rem] text-slate-400">
+                                                Small changes each day can reclaim hours of your life.
+                                            </p>
+                                        </div>
+                                        <div class="mt-2 flex justify-between text-[0.65rem] text-slate-500">
+                                            <span>Swipe up to begin the self-check ⬆</span>
+                                            <span class="flex items-center gap-1">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-red-500"></span> 9+ notifs
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What Is Social Dilemma? -->
+                <div id="about-us-page" class="card hover-card p-6 sm:p-8 rounded-2xl shadow-2xl">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-amber-400 mb-2 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-7 h-7 mr-3 text-amber-300">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12v-.008Z" />
+                        </svg>
+                        What Is The Social Dilemma?
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-400 mb-4">
+                        Social media isn’t “just an app”. It’s a system designed to compete for your attention every
+                        waking minute.
+                    </p>
+                    <ul class="space-y-4 text-base sm:text-lg text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none animate-subtle-shake">📱😟</span>
+                            <span>The Social Dilemma explains how social media platforms are engineered to influence our
+                                behavior and decisions.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">🔗💭</span>
+                            <span>They use design tricks like infinite scroll and red notification badges to keep you
+                                online for as long as possible.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">🔍🎯</span>
+                            <span>Apps constantly collect your data to build psychological profiles and show content
+                                that keeps you hooked.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">🧠💡</span>
+                            <span>The goal is not your well-being—it’s your attention. But awareness is the first step
+                                to taking control back.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- How It Impacts Humans & Social Life (Mobile Addiction) -->
+                <div class="card hover-card p-6 sm:p-8 rounded-2xl shadow-2xl">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-amber-400 mb-6 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-7 h-7 mr-3 text-amber-300">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 13.125l9.789 7.029-9.526 2.664-9.789-7.029V5.112z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21.25V7.5L3 13.125M12 21.25l-9-5.125m9 5.125v-9.75M12 7.5l-9-5.125" />
+                        </svg>
+                        How It Impacts Humans & Social Life
+                    </h2>
+                    <ul class="space-y-4 text-base sm:text-lg text-gray-300">
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">😶‍🌫️</span>
+                            <span><strong>Reduced real-life connection:</strong> Choosing screens over people leads to
+                                loneliness and emotional distance.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">😥</span>
+                            <span><strong>Anxiety, stress & FOMO:</strong> Constant comparison with “perfect” lives
+                                online can damage self-esteem.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">🌙📱</span>
+                            <span><strong>Broken sleep:</strong> Late-night scrolling and blue light disrupt your
+                                brain’s natural rest cycle.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">⏳</span>
+                            <span><strong>Weakened focus:</strong> Short, fast content trains your brain to crave
+                                constant stimulation.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-3 leading-none">💬❌</span>
+                            <span><strong>Strained relationships:</strong> Being physically present but mentally online
+                                hurts trust and intimacy.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Simple 3-step process section -->
+                <div class="card hover-card p-6 sm:p-8 rounded-2xl shadow-2xl">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">How This Page Helps You</h3>
+                    <p class="text-sm sm:text-base text-slate-400 mb-5">
+                        You don’t have to quit your phone overnight. Start with small, honest reflection steps.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="rounded-2xl bg-slate-950/50 border border-slate-800/80 p-4 flex flex-col gap-2">
+                            <span class="text-xs uppercase tracking-wide text-slate-500">Step 1</span>
+                            <p class="font-semibold text-amber-300 text-sm sm:text-base">Understand the trap</p>
+                            <p class="text-xs sm:text-sm text-slate-400">Learn how social media pulls you into endless
+                                scrolling without you noticing.</p>
+                        </div>
+                        <div class="rounded-2xl bg-slate-950/70 border border-slate-700 p-4 flex flex-col gap-2">
+                            <span class="text-xs uppercase tracking-wide text-slate-500">Step 2</span>
+                            <p class="font-semibold text-amber-300 text-sm sm:text-base">Take the self-test</p>
+                            <p class="text-xs sm:text-sm text-slate-400">Get a realistic snapshot of your current
+                                digital dependency level.</p>
+                        </div>
+                        <div class="rounded-2xl bg-slate-950/50 border border-slate-800/80 p-4 flex flex-col gap-2">
+                            <span class="text-xs uppercase tracking-wide text-slate-500">Step 3</span>
+                            <p class="font-semibold text-amber-300 text-sm sm:text-base">Reach out for support</p>
+                            <p class="text-xs sm:text-sm text-slate-400">If your results are high, we help you design a
+                                detox plan that fits your life.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonials Section -->
+                <div class="py-12">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">
+                            Real Stories. Real Life Impact.
+                        </h2>
+                        <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                            Social media doesn’t just consume time — it quietly affects marriages, parenting,
+                            work focus, and emotional connection. These are honest experiences from people
+                            who chose awareness over denial.
+                        </p>
+                    </div>
+
+                    <div id="testimonial-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+                        <!-- Testimonial 1: Teen Boy -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 text-6xl text-amber-500/10 leading-none p-4">"</div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-xl">
+                                    👦
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Arjun, 16</p>
+                                    <p class="text-xs text-slate-400">High School Student</p>
+                                </div>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3">
+                                I was scrolling Reels for almost six hours every day. My grades dropped, and I slowly
+                                stopped talking to friends in real life.
+                                <span class="text-amber-300 font-semibold">
+                                    The quiz helped me understand my attention was being trained to stay online.
+                                </span>
+                                Now I use app limits and feel present again — in school and with people.
+                            </p>
+                            <div class="flex gap-1">
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2: Mother -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 text-6xl text-amber-500/10 leading-none p-4">"</div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="h-12 w-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-400 flex items-center justify-center text-xl">
+                                    👩
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Priya M., 38</p>
+                                    <p class="text-xs text-slate-400">Working Mother</p>
+                                </div>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3">
+                                I didn’t notice how often I checked WhatsApp — during meals, while my husband was
+                                talking, even when my kids wanted attention.
+                                <span class="text-amber-300 font-semibold">
+                                    It was silently affecting my marriage and family bonding.
+                                </span>
+                                Learning to set boundaries brought back real conversations at home.
+                            </p>
+                            <div class="flex gap-1">
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3: Software Engineer -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 text-6xl text-amber-500/10 leading-none p-4">"</div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-400 flex items-center justify-center text-xl">
+                                    👨‍💼
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Rahul K., 29</p>
+                                    <p class="text-xs text-slate-400">Software Engineer</p>
+                                </div>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3">
+                                Late-night scrolling felt harmless until my sleep, focus, and patience collapsed.
+                                <span class="text-amber-300 font-semibold">
+                                    Social media was stealing my recovery time.
+                                </span>
+                                A realistic detox helped me work better — and actually enjoy evenings again.
+                            </p>
+                            <div class="flex gap-1">
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 4: Teen Girl -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 text-6xl text-amber-500/10 leading-none p-4">"</div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-rose-400 flex items-center justify-center text-xl">
+                                    👧
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Ananya, 14</p>
+                                    <p class="text-xs text-slate-400">Middle School Student</p>
+                                </div>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3">
+                                Instagram made me compare my looks and life with influencers.
+                                I always felt behind.
+                                <span class="text-amber-300 font-semibold">
+                                    Understanding how fake perfection affects the brain changed everything.
+                                </span>
+                                I feel more confident being myself now.
+                            </p>
+                            <div class="flex gap-1">
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 5: Father -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 text-6xl text-amber-500/10 leading-none p-4">"</div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="h-12 w-12 rounded-full bg-gradient-to-br from-orange-400 to-red-400 flex items-center justify-center text-xl">
+                                    👨
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Vikram S., 42</p>
+                                    <p class="text-xs text-slate-400">Father & Business Owner</p>
+                                </div>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3">
+                                We tried shouting, punishment, and restrictions with our son — nothing worked.
+                                <span class="text-amber-300 font-semibold">
+                                    We learned that empathy and structure work better than control.
+                                </span>
+                                Screen-free evenings changed our family atmosphere completely.
+                            </p>
+                            <div class="flex gap-1">
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 6: Young Professional -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 text-6xl text-amber-500/10 leading-none p-4">"</div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="h-12 w-12 rounded-full bg-gradient-to-br from-cyan-400 to-sky-400 flex items-center justify-center text-xl">
+                                    👩‍💻
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Sneha D., 26</p>
+                                    <p class="text-xs text-slate-400">Marketing Professional</p>
+                                </div>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-3">
+                                I was constantly online but emotionally disconnected from people around me.
+                                <span class="text-amber-300 font-semibold">
+                                    Social media was shaping my mood and self-worth.
+                                </span>
+                                After small changes, I feel calmer, more creative, and more present.
+                            </p>
+                            <div class="flex gap-1">
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span><span class="text-amber-400">⭐</span>
+                                <span class="text-amber-400">⭐</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <p class="text-xs sm:text-sm text-slate-500 italic">
+                            * Names have been changed to protect privacy. These are real experiences shared with
+                            permission.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- Call to Action: Addiction Test -->
+                <div class="text-center pt-8 pb-10 border-y border-gray-800/70">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to Check Your Digital Dependency?
+                    </h3>
+                    <p class="text-gray-400 mb-5 text-sm sm:text-base max-w-xl mx-auto">
+                        This self-test is not a diagnosis—but it can be a powerful wake-up call and the first step to
+                        changing your habits.
+                    </p>
+                    <button onclick="showPage('quiz')"
+                        class="primary-btn text-slate-950 font-bold py-3 px-8 rounded-full shadow-xl text-base sm:text-lg flex items-center gap-2 mx-auto">
+                        🧠 Start the Self-Check
+                    </button>
+                </div>
+
+                <!-- Contact Details & WhatsApp on Home Page -->
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Contact Details -->
+                    <div class="card hover-card p-6 rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-semibold text-white mb-4 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-6 h-6 mr-2 text-amber-400">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            </svg>
+                            Need Immediate Support?
+                        </h3>
+                        <div class="space-y-3 text-base">
+                            <p class="text-gray-300">
+                                <span class="font-bold text-amber-300">Email:</span>
+                                <a href="mailto:suryasevanthi.socialdelima@gmail.com"
+                                    class="hover:underline">suryasevanthi.socialdelima@gmail.com</a>
+                            </p>
+                            <p class="text-gray-300">
+                                <span class="font-bold text-amber-300">Phone:</span>
+                                <a href="tel:+91 99166 54323" class="hover:underline">+91 99166 54323</a>
+                            </p>
+                            <p class="text-xs text-gray-500 pt-1">
+                                You’re not alone. Reaching out is a sign of strength, not weakness. 💙
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Channel -->
+                    <div class="card hover-card p-6 rounded-2xl shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="whatsapp-icon animate-pulse-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12.038 10.607c-.777 0-1.408.625-1.432 1.385l-.014.286c-.032 1.34.832 2.502 2.073 2.768l.192.04c.828.175 1.579.52 2.21 1.053l.317.261.272.22c.631.533 1.382.878 2.21 1.053l.192.04c.006.001.011.002.017.002.164.03.332.05.501.05h.001a4.01 4.01 0 0 0 4-4c0-.994-.393-1.954-1.09-2.651-.703-.69-1.66-.884-2.66-.583l-.155.053c-.702.24-1.294.62-1.77.854l-.062.03c-.22.106-.444.17-.676.195l-.062.006c-.027.003-.054.005-.081.006-.007 0-.014-.001-.02-.001-.019 0-.038-.002-.057-.005l-.062-.01c-.16-.024-.316-.065-.47-.123l-.154-.06c-.663-.255-1.39-.427-2.16-.49l-.08-.006c-.035 0-.07-.001-.105-.001zM12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-4.314 17.514c-.035.034-.07.067-.105.099l-.317.294c-.218.2-.444.372-.676.516l-.272.167c-.232.144-.471.265-.717.362l-.337.135c-.247.097-.5.176-.757.238l-.403.097c-.01.002-.02.004-.03.006-.03.007-.06.012-.09.017l-.146.02-.095.008c-.287.025-.579.038-.87.038-.3 0-.6-.009-.89-.028l-.29-.015c-1.12-.05-2.18-.242-3.15-.568l-.426-.142-.363-.13-.39-.148c-.97-.37-1.87-.84-2.67-1.42l-.294-.216-.328-.246c-.732-.547-1.38-1.187-1.92-1.93l-.226-.316-.25-.365c-.547-.732-.987-1.558-1.27-2.434l-.096-.3c-.07-.22-.113-.448-.135-.68l-.007-.07c0-.28-.01-.56-.02-.83l-.002-.27c0-2.316.896-4.526 2.518-6.148 1.623-1.623 3.834-2.518 6.15-2.518s4.527.895 6.15 2.518c1.623 1.622 2.518 3.832 2.518 6.148 0 1.258-.28 2.476-.816 3.585l-.26.544c-.547 1.14-1.34 2.14-2.36 3.01l-.22.185c-.2.17-.412.33-.637.472l-.36.257c-.225.142-.462.274-.71.392l-.324.155c-.248.117-.5.213-.757.29l-.357.102c-.257.077-.52.138-.79.18l-.34.053c-.27.042-.544.067-.82.074l-.27.007c-.28.007-.56.007-.84.007z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white ml-3">Join Our WhatsApp Channel</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4">
+                            Receive daily tips, mindful challenges, and resources for a healthier digital life. Join our
+                            community for real-time support!
+                        </p>
+                        <a href="https://www.whatsapp.com/channel/0029VbBa3IP7YScyjqXOa83P" target="_blank"
+                            class="w-full inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12.038 10.607c-.777 0-1.408.625-1.432 1.385l-.014.286c-.032 1.34.832 2.502 2.073 2.768l.192.04c.828.175 1.579.52 2.21 1.053l.317.261.272.22c.631.533 1.382.878 2.21 1.053l.192.04c.006.001.011.002.017.002.164.03.332.05.501.05h.001a4.01 4.01 0 0 0 4-4c0-.994-.393-1.954-1.09-2.651-.703-.69-1.66-.884-2.66-.583l-.155.053c-.702.24-1.294.62-1.77.854l-.062.03c-.22.106-.444.17-.676.195l-.062.006c-.027.003-.054.005-.081.006-.007 0-.014-.001-.02-.001-.019 0-.038-.002-.057-.005l-.062-.01c-.16-.024-.316-.065-.47-.123l-.154-.06c-.663-.255-1.39-.427-2.16-.49l-.08-.006c-.035 0-.07-.001-.105-.001zM12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-4.314 17.514c-.035.034-.07.067-.105.099l-.317.294c-.218.2-.444.372-.676.516l-.272.167c-.232.144-.471.265-.717.362l-.337.135c-.247.097-.5.176-.757.238l-.403.097c-.01.002-.02.004-.03.006-.03.007-.06.012-.09.017l-.146.02-.095.008c-.287.025-.579.038-.87.038-.3 0-.6-.009-.89-.028l-.29-.015c-1.12-.05-2.18-.242-3.15-.568l-.426-.142-.363-.13-.39-.148c-.97-.37-1.87-.84-2.67-1.42l-.294-.216-.328-.246c-.732-.547-1.38-1.187-1.92-1.93l-.226-.316-.25-.365c-.547-.732-.987-1.558-1.27-2.434l-.096-.3c-.07-.22-.113-.448-.135-.68l-.007-.07c0-.28-.01-.56-.02-.83l-.002-.27c0-2.316.896-4.526 2.518-6.148 1.623-1.623 3.834-2.518 6.15-2.518s4.527.895 6.15 2.518c1.623 1.622 2.518 3.832 2.518 6.148 0 1.258-.28 2.476-.816 3.585l-.26.544c-.547 1.14-1.34 2.14-2.36 3.01l-.22.185c-.2.17-.412.33-.637.472l-.36.257c-.225.142-.462.274-.71.392l-.324.155c-.248.117-.5.213-.757.29l-.357.102c-.257.077-.52.138-.79.18l-.34.053c-.27.042-.544.067-.82.074l-.27.007c-.28.007-.56.007-.84.007z" />
+                            </svg>
+                            Join Channel
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Page -->
+            <section id="quiz-page" class="page-content hidden">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 sm:mb-8 border-b border-gray-700 pb-4">
+                    Self-Check: Mobile/Social Media Addiction Test
+                </h1>
+                <p class="text-base sm:text-lg text-gray-300 mb-8">
+                    Select the option that best describes your behavior. Options <span
+                        class="font-semibold text-amber-300">C</span> and <span
+                        class="font-semibold text-amber-300">D</span> indicate higher levels of digital dependency.
+                </p>
+
+                <!-- 🌍 Global quiz progress (top bar) -->
+                <div id="quiz-global-progress" class="mb-6">
+                    <div class="flex items-center justify-between text-xs sm:text-sm text-slate-400 mb-2">
+                        <span id="quiz-progress-label">0 of 20 answered</span>
+                        <span id="quiz-progress-percent">0%</span>
+                    </div>
+                    <div class="h-2 rounded-full bg-slate-800 overflow-hidden">
+                        <div id="quiz-progress-bar-inner"
+                            class="h-full rounded-full bg-gradient-to-r from-emerald-400 via-amber-400 to-red-400"
+                            style="width: 0%;">
+                        </div>
+                    </div>
+                </div>
+
+                <form id="addiction-quiz" class="space-y-8">
+                    <!-- Questions will be dynamically inserted here -->
+                </form>
+
+                <div class="mt-10 pt-6 border-t border-gray-700 flex justify-end">
+                    <button id="submit-quiz-btn" onclick="submitQuiz()"
+                        class="primary-btn text-gray-900 font-bold py-3 px-8 rounded-lg shadow-xl text-base sm:text-lg flex items-center gap-2">
+                        Submit My Results
+                    </button>
+                </div>
+
+                <!-- Result Display -->
+                <div id="quiz-result" class="hidden mt-10 sm:mt-12 p-8 card rounded-2xl shadow-2xl">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4 border-b border-gray-600 pb-2">Your Test
+                        Summary</h2>
+                    <div id="summary-details" class="text-lg text-gray-300 grid grid-cols-2 gap-4">
+                        <!-- Summary details here -->
+                    </div>
+
+                    <!-- Main Warning/Result Box -->
+                    <div id="final-warning" class="mt-6 p-4 rounded-lg text-xl font-semibold border-l-4">
+                        <!-- Warning message here -->
+                    </div>
+
+                    <!-- Attractive Call to Action (Appears for high risk) -->
+                    <div id="seek-help-cta"
+                        class="hidden mt-8 p-6 rounded-2xl bg-blue-800/40 border-2 border-blue-500 shadow-2xl text-center">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-blue-300 mb-2">🔥 Time to Take Back Control! 🔥
+                        </h3>
+                        <p class="text-base sm:text-lg text-white mb-6">
+                            Don't wait for the digital world to consume your real life. <span
+                                class="font-bold text-amber-300">Your next step starts now.</span>
+                        </p>
+                        <button onclick="showPage('contact')"
+                            class="primary-btn bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 text-white font-bold py-3 px-8 rounded-full transition transform hover:scale-105 active:scale-95 text-base sm:text-lg shadow-lg">
+                            💬 Seek Help & Get a Detox Plan
+                        </button>
+                    </div>
+
+                    <div class="mt-6 text-center">
+                        <button onclick="showPage('home')"
+                            class="text-amber-400 hover:text-amber-300 transition text-sm sm:text-base">← Back to
+                            Home</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Page: Form and Details -->
+            <section id="contact-page" class="page-content hidden">
+                <div class="text-center mb-10 sm:mb-12">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">Connect With Our Team</h1>
+                    <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                        Whether you need professional advice, want to schedule a detox consultation, or have general
+                        questions, please reach out. We ensure complete confidentiality.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Contact Form (2/3 width on desktop) -->
+                    <div class="lg:col-span-2 card hover-card p-6 sm:p-8 rounded-2xl shadow-2xl">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-amber-400 mb-6 border-b border-gray-700 pb-3">
+                            Send Us Your Inquiry</h2>
+
+                        <!-- CONTACT FORM → combined with Razorpay -->
+                        <form id="contact-form" onsubmit="handleContactAndPayment(event)">
+
+                            <!-- Name and Email -->
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="form-label">Full Name <span
+                                            class="text-red-400">*</span></label>
+                                    <input type="text" id="name" name="name" class="form-input"
+                                        placeholder="Enter your full name" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="form-label">Email Address <span
+                                            class="text-red-400">*</span></label>
+                                    <!-- NOTE: keep name="_replyto" for your sheet & Apps Script -->
+                                    <input type="email" id="email" name="_replyto" class="form-input"
+                                        placeholder="name@example.com" required>
+                                    <p class="mt-1 text-xs text-gray-500">We’ll reply to you at this email.</p>
+                                </div>
+                            </div>
+
+                            <!-- Phone and Subject -->
+                            <div class="grid sm:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <label for="phone" class="form-label">Phone Number <span
+                                            class="text-red-400">*</span></label>
+                                    <input type="tel" id="phone" name="phone" class="form-input"
+                                        placeholder="+91 98XXXXXXXX" required>
+                                </div>
+                                <div>
+                                    <label for="subject" class="form-label">Subject <span
+                                            class="text-red-400">*</span></label>
+                                    <select id="subject" name="subject" class="form-input" required>
+                                        <option value="" disabled selected>Select a reason for contact</option>
+                                        <option value="detox-consultation">Digital Detox Consultation</option>
+                                        <option value="mobile-addiction">Mobile / Social Media / Reels Addiction
+                                        </option>
+                                        <option value="teen-mobile-addiction">Teen Mobile Addiction</option>
+                                        <option value="kids-screen-issue">Kids Screen Issue</option>
+                                        <option value="screen-time-concern">Screen Time / Focus Concern</option>
+                                        <option value="quiz-followup">Quiz Results Follow-up</option>
+                                        <option value="general-inquiry">General Inquiry</option>
+                                        <option value="media-request">Media / Press Request</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="mt-6">
+                                <label for="message" class="form-label">Your Message / Query <span
+                                        class="text-red-400">*</span></label>
+                                <textarea id="message" name="message" rows="5" class="form-input"
+                                    placeholder="Describe your concerns or request in detail..." required></textarea>
+                            </div>
+
+                            <!-- Engagement / Support / Donation Options -->
+                            <div class="mt-8 space-y-4">
+                                <h3 class="text-lg sm:text-xl font-semibold text-white">How would you like to engage
+                                    right now?</h3>
+                                <p class="text-xs sm:text-sm text-slate-400">
+                                    You can simply send your message, or also support this project / book a 1:1
+                                    consultation. Your details and any payment will be stored together.
+                                </p>
+
+                                <div class="space-y-3">
+                                    <!-- Contact only -->
+                                    <label
+                                        class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/80 cursor-pointer hover:border-amber-400/80">
+                                        <input type="radio" name="engagement_type" value="contact_only"
+                                            class="mt-1 h-4 w-4 text-amber-500" checked>
+                                        <span class="text-sm sm:text-base text-slate-100">
+                                            <span class="font-semibold">Just contact / I need guidance (no payment
+                                                now)</span>
+                                            <span class="block text-xs sm:text-sm text-slate-400">
+                                                Your message will be sent to our team, and we’ll get back to you by
+                                                email / phone.
+                                            </span>
+                                        </span>
+                                    </label>
+
+                                    <!-- Support / donation -->
+                                    <label
+                                        class="flex flex-col gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-700/80 cursor-pointer hover:border-amber-400/80">
+                                        <div class="flex items-start gap-3">
+                                            <input type="radio" name="engagement_type" value="support_donation"
+                                                class="mt-1 h-4 w-4 text-amber-500">
+                                            <span class="text-sm sm:text-base text-slate-100">
+                                                <span class="font-semibold">Support / Donate to the Digital Detox
+                                                    project</span>
+                                                <span class="block text-xs sm:text-sm text-slate-400">
+                                                    A small one-time contribution to keep this awareness work going (in
+                                                    test mode for now).
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="pl-7 flex flex-wrap gap-2">
+                                            <label
+                                                class="inline-flex items-center text-xs sm:text-sm px-2.5 py-1.5 rounded-full bg-slate-950/70 border border-slate-700/80 cursor-pointer">
+                                                <input type="radio" name="donation_amount" value="199"
+                                                    class="h-3.5 w-3.5 text-amber-500">
+                                                <span class="ml-2 text-slate-200">₹199</span>
+                                            </label>
+                                            <label
+                                                class="inline-flex items-center text-xs sm:text-sm px-2.5 py-1.5 rounded-full bg-slate-950/70 border border-slate-700/80 cursor-pointer">
+                                                <input type="radio" name="donation_amount" value="299"
+                                                    class="h-3.5 w-3.5 text-amber-500">
+                                                <span class="ml-2 text-slate-200">₹299</span>
+                                            </label>
+                                            <label
+                                                class="inline-flex items-center text-xs sm:text-sm px-2.5 py-1.5 rounded-full bg-slate-950/70 border border-slate-700/80 cursor-pointer">
+                                                <input type="radio" name="donation_amount" value="399"
+                                                    class="h-3.5 w-3.5 text-amber-500">
+                                                <span class="ml-2 text-slate-200">₹399</span>
+                                            </label>
+                                        </div>
+                                    </label>
+
+                                    <!-- 1:1 consultation -->
+                                    <label
+                                        class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-700/80 cursor-pointer hover:border-amber-400/80">
+                                        <input type="radio" name="engagement_type" value="consult_1_1"
+                                            class="mt-1 h-4 w-4 text-amber-500">
+                                        <span class="text-sm sm:text-base text-slate-100">
+                                            <span class="font-semibold">1:1 Deep Consultation Call – ₹999</span>
+                                            <span class="block text-xs sm:text-sm text-slate-400">
+                                                A focused 45–60 minute session to understand your situation and build a
+                                                realistic detox plan.
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <p class="text-[0.7rem] sm:text-xs text-slate-500">
+                                    If you choose a paid option, you’ll be redirected to a secure Razorpay checkout.
+                                    Your contact details and payment will be saved together – you do <span
+                                        class="font-semibold text-amber-300">not</span> need to fill anything twice.
+                                </p>
+                            </div>
+
+                            <!-- Submission Button (single flow for contact + payment) -->
+                            <button id="contact-submit-btn" type="submit"
+                                class="mt-6 w-full primary-btn text-white font-bold py-3 px-6 rounded-lg text-base sm:text-lg shadow-xl flex items-center justify-center gap-2">
+                                <span id="contact-submit-text">Send Details / Continue</span>
+                                <span id="contact-loading-spinner"
+                                    class="hidden h-4 w-4 border-2 border-slate-900 border-t-transparent rounded-full animate-spin"></span>
+                            </button>
+
+                            <div id="form-feedback" class="mt-4 p-3 rounded-lg text-center hidden"></div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Details (1/3 width on desktop) -->
+                    <div class="lg:col-span-1 space-y-8">
+                        <!-- Direct Contact Block -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl">
+                            <h3 class="text-2xl font-semibold text-white mb-4 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-6 h-6 mr-2 text-amber-400">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                </svg>
+                                Direct Contact
+                            </h3>
+                            <div class="space-y-3 text-base">
+                                <p class="text-gray-300">
+                                    <span class="font-bold text-amber-300">Email:</span>
+                                    <a href="mailto:suryasevanthi.socialdelima@gmail.com"
+                                        class="hover:underline">suryasevanthi.socialdelima@gmail.com</a>
+                                </p>
+                                <p class="text-gray-300">
+                                    <span class="font-bold text-amber-300">Phone:</span>
+                                    <a href="tel:+91 99166 54323" class="hover:underline">+91 99166 54323</a>
+                                </p>
+                                <p class="text-xs text-gray-500 pt-1">
+                                    If you’re in crisis, please also contact local mental health or emergency services
+                                    in your area.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Block -->
+                        <div class="card hover-card p-6 rounded-2xl shadow-xl">
+                            <div class="flex items-center mb-4">
+                                <div class="whatsapp-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path
+                                            d="M12.038 10.607c-.777 0-1.408.625-1.432 1.385l-.014.286c-.032 1.34.832 2.502 2.073 2.768l.192.04c.828.175 1.579.52 2.21 1.053l.317.261.272.22c.631.533 1.382.878 2.21 1.053l.192.04c.006.001.011.002.017.002.164.03.332.05.501.05h.001a4.01 4.01 0 0 0 4-4c0-.994-.393-1.954-1.09-2.651-.703-.69-1.66-.884-2.66-.583l-.155.053c-.702.24-1.294.62-1.77.854l-.062.03c-.22.106-.444.17-.676.195l-.062.006c-.027.003-.054.005-.081.006-.007 0-.014-.001-.02-.001-.019 0-.038-.002-.057-.005l-.062-.01c-.16-.024-.316-.065-.47-.123l-.154-.06c-.663-.255-1.39-.427-2.16-.49l-.08-.006c-.035 0-.07-.001-.105-.001zM12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-4.314 17.514c-.035.034-.07.067-.105.099l-.317.294c-.218.2-.444.372-.676.516l-.272.167c-.232.144-.471.265-.717.362l-.337.135c-.247.097-.5.176-.757.238l-.403.097c-.01.002-.02.004-.03.006-.03.007-.06.012-.09.017l-.146.02-.095.008c-.287.025-.579.038-.87.038-.3 0-.6-.009-.89-.028l-.29-.015c-1.12-.05-2.18-.242-3.15-.568l-.426-.142-.363-.13-.39-.148c-.97-.37-1.87-.84-2.67-1.42l-.294-.216-.328-.246c-.732-.547-1.38-1.187-1.92-1.93l-.226-.316-.25-.365c-.547-.732-.987-1.558-1.27-2.434l-.096-.3c-.07-.22-.113-.448-.135-.68l-.007-.07c0-.28-.01-.56-.02-.83l-.002-.27c0-2.316.896-4.526 2.518-6.148 1.623-1.623 3.834-2.518 6.15-2.518s4.527.895 6.15 2.518c1.623 1.622 2.518 3.832 2.518 6.148 0 1.258-.28 2.476-.816 3.585l-.26.544c-.547 1.14-1.34 2.14-2.36 3.01l-.22.185c-.2.17-.412.33-.637.472l-.36.257c-.225.142-.462.274-.71.392l-.324.155c-.248.117-.5.213-.757.29l-.357.102c-.257.077-.52.138-.79.18l-.34.053c-.27.042-.544.067-.82.074l-.27.007c-.28.007-.56.007-.84.007z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-white ml-3">Join Our WhatsApp Channel</h3>
+                            </div>
+                            <p class="text-gray-400 mb-4">
+                                Get daily tips and mindful challenges directly.
+                            </p>
+                            <a href="https://www.whatsapp.com/channel/0029VbBa3IP7YScyjqXOa83P" target="_blank"
+                                class="w-full inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M12.038 10.607c-.777 0-1.408.625-1.432 1.385l-.014.286c-.032 1.34.832 2.502 2.073 2.768l.192.04c.828.175 1.579.52 2.21 1.053l.317.261.272.22c.631.533 1.382.878 2.21 1.053l.192.04c.006.001.011.002.017.002.164.03.332.05.501.05h.001a4.01 4.01 0 0 0 4-4c0-.994-.393-1.954-1.09-2.651-.703-.69-1.66-.884-2.66-.583l-.155.053c-.702.24-1.294.62-1.77.854l-.062.03c-.22.106-.444.17-.676.195l-.062.006c-.027.003-.054.005-.081.006-.007 0-.014-.001-.02-.001-.019 0-.038-.002-.057-.005l-.062-.01c-.16-.024-.316-.065-.47-.123l-.154-.06c-.663-.255-1.39-.427-2.16-.49l-.08-.006c-.035 0-.07-.001-.105-.001zM12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-4.314 17.514c-.035.034-.07.067-.105.099l-.317.294c-.218.2-.444.372-.676.516l-.272.167c-.232.144-.471.265-.717.362l-.337.135c-.247.097-.5.176-.757.238l-.403.097c-.01.002-.02.004-.03.006-.03.007-.06.012-.09.017l-.146.02-.095.008c-.287.025-.579.038-.87.038-.3 0-.6-.009-.89-.028l-.29-.015c-1.12-.05-2.18-.242-3.15-.568l-.426-.142-.363-.13-.39-.148c-.97-.37-1.87-.84-2.67-1.42l-.294-.216-.328-.246c-.732-.547-1.38-1.187-1.92-1.93l-.226-.316-.25-.365c-.547-.732-.987-1.558-1.27-2.434l-.096-.3c-.07-.22-.113-.448-.135-.68l-.007-.07c0-.28-.01-.56-.02-.83l-.002-.27c0-2.316.896-4.526 2.518-6.148 1.623-1.623 3.834-2.518 6.15-2.518s4.527.895 6.15 2.518c1.623 1.622 2.518 3.832 2.518 6.148 0 1.258-.28 2.476-.816 3.585l-.26.544c-.547 1.14-1.34 2.14-2.36 3.01l-.22.185c-.2.17-.412.33-.637.472l-.36.257c-.225.142-.462.274-.71.392l-.324.155c-.248.117-.5.213-.757.29l-.357.102c-.257.077-.52.138-.79.18l-.34.053c-.27.042-.544.067-.82.074l-.27.007c-.28.007-.56.007-.84.007z" />
+                                </svg>
+                                Join Channel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="card mt-12 py-6 border-t border-gray-800 text-center text-gray-500 text-xs sm:text-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p>&copy; 2024 Digital Detox Initiative. All rights reserved. | <button onclick="showPage('contact')"
+                        class="hover:text-amber-400">Resources</button></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ✨ Success Modal (delight popup) -->
+    <div id="success-modal"
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+        <div class="card max-w-md w-[90%] rounded-2xl shadow-2xl border border-amber-500/40 p-8 modal-pop text-center">
+            <div class="text-4xl mb-3">🎉</div>
+            <h3 class="text-2xl font-bold text-white mb-2">
+                Thank you, <span id="success-name" class="text-amber-400">Friend</span>!
+            </h3>
+            <p class="text-gray-300 mb-3">
+                Your message has been safely received and will be read by a real person from our Digital Detox team —
+                not a bot.
+            </p>
+            <p class="text-gray-400 text-sm mb-5">
+                We’ll respond to you privately with next steps and suggestions tailored to your situation.
+                If things feel very heavy or urgent right now, please also reach out to trusted people around you
+                or local mental health / emergency services. You don’t have to handle this alone. 💙
+            </p>
+            <a href="https://www.whatsapp.com/channel/0029VbBa3IP7YScyjqXOa83P" target="_blank"
+                class="inline-flex items-center justify-center mb-4 px-4 py-2 rounded-full border border-emerald-400/70 bg-emerald-900/10 hover:bg-emerald-900/30 text-xs sm:text-sm text-emerald-200 gap-2">
+                💬 Join our WhatsApp channel for daily support
+            </a>
+            <button onclick="closeSuccessModal()"
+                class="primary-btn bg-gradient-to-r from-amber-400 via-amber-500 to-amber-300 text-gray-900 font-semibold py-2.5 px-6 rounded-full shadow-md transition">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- 🔼 Scroll-to-top button -->
+    <button id="scroll-top-btn"
+        class="fixed bottom-6 right-6 z-40 rounded-full bg-slate-900/80 border border-slate-600 shadow-lg p-3 text-slate-100 hover:bg-slate-800 hover:border-amber-400 hidden-btn"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" aria-label="Scroll to top">
+        ⬆
+    </button>
+
+    <!-- Razorpay Checkout script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    
+    
+
+</body>
+
+</html>

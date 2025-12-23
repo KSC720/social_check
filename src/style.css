@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-primary: #1D4ED8;
+    /* Blue */
+    --color-secondary: #F59E0B;
+    /* Amber/Orange */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #E5E7EB;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #020617 100%);
+    background-attachment: fixed;
+}
+
+/* Subtle animated background glow */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -40%;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(251, 191, 36, 0.08) 0, transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.09) 0, transparent 50%),
+        radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.04) 0, transparent 55%);
+    opacity: 0.9;
+    z-index: -1;
+    animation: bg-orbit 40s linear infinite alternate;
+}
+
+/* Keyframes moved to tailwind.config.js but kept here for fallback/reference if needed, 
+   though Tailwind config handles them now. We can remove the @keyframes from here 
+   if we are sure Tailwind is picking them up, but keeping them doesn't hurt 
+   (except for duplication size). I will comment them out or remove them to rely on Tailwind. 
+   Actually, for safety in this refactor, I will leave the class definitions that USE them,
+   but since I defined the animations in tailwind.config.js, I should use the utility classes.
+   However, the original CSS used standard CSS classes like .animate-pulse-icon.
+   I will keep the CSS classes here for compatibility with the existing HTML class names.
+*/
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+}
+
+.card {
+    background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.03) 0, rgba(15, 23, 42, 0.98) 45%, #020617 100%);
+    border: 1px solid rgba(15, 23, 42, 0.9);
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(12px);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.card.hover-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 158, 11, 0.7);
+    box-shadow:
+        0 22px 60px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(252, 211, 77, 0.35);
+    background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.1) 0, rgba(15, 23, 42, 1) 45%, #020617 100%);
+}
+
+.whatsapp-icon {
+    background: #25D366;
+    color: white;
+    padding: 8px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 8px 20px rgba(34, 197, 94, 0.4),
+        0 0 0 1px rgba(15, 23, 42, 0.7);
+}
+
+.animate-pulse-icon {
+    animation: pulse-icon 2.3s infinite ease-in-out;
+}
+
+.animate-subtle-shake {
+    display: inline-block;
+    animation: subtle-shake 4s infinite 1s;
+}
+
+/* Hero glow orb - responsive */
+.hero-orb {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 260px;
+    height: 260px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(248, 250, 252, 0.16) 0, transparent 60%);
+    filter: blur(4px);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@media (min-width: 640px) {
+    .hero-orb {
+        top: -60px;
+        width: 360px;
+        height: 360px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-orb {
+        top: -80px;
+        width: 520px;
+        height: 520px;
+    }
+}
+
+/* Fancy hero "phone" mockup */
+.hero-phone {
+    position: relative;
+    border-radius: 1.75rem;
+    padding: 1px;
+    background: conic-gradient(from 220deg,
+            rgba(251, 191, 36, 0.85),
+            rgba(59, 130, 246, 0.9),
+            rgba(236, 72, 153, 0.85),
+            rgba(56, 189, 248, 0.9),
+            rgba(251, 191, 36, 0.85));
+    box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.9),
+        0 0 80px rgba(56, 189, 248, 0.35);
+    animation: border-spin 18s linear infinite;
+    max-width: 280px;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .hero-phone {
+        max-width: 320px;
+    }
+}
+
+.hero-phone-inner {
+    border-radius: 1.6rem;
+    padding: 1.25rem 1rem;
+    background: radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
+    border: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+.hero-phone-notch {
+    width: 48%;
+    height: 10px;
+    border-radius: 999px;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    margin: 0 auto 12px;
+}
+
+.hero-phone-screen {
+    border-radius: 1.2rem;
+    background: radial-gradient(circle at top, rgba(251, 191, 36, 0.18), rgba(15, 23, 42, 1));
+    border: 1px solid rgba(55, 65, 81, 0.9);
+    padding: 1rem;
+    box-shadow: inset 0 0 40px rgba(15, 23, 42, 0.9);
+}
+
+.animate-floating {
+    animation: float-soft 5s ease-in-out infinite;
+}
+
+/* Form styling */
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    background-color: #020617;
+    border: 1px solid #1f2937;
+    color: #E5E7EB;
+    border-radius: 0.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s, transform 0.15s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #F59E0B;
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.3);
+    background-color: #020617;
+    transform: translateY(-1px);
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #E5E7EB;
+}
+
+/* Primary buttons shimmer */
+.primary-btn {
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(90deg, #F59E0B, #F97316, #FACC15);
+    background-size: 220% 100%;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-position 0.5s ease;
+}
+
+.primary-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity 0.25s, transform 0.6s;
+}
+
+.primary-btn:hover {
+    background-position: 100% 0;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(250, 204, 21, 0.25);
+}
+
+.primary-btn:hover::after {
+    opacity: 1;
+    transform: translateX(100%);
+}
+
+.primary-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: none;
+}
+
+.fade-in-up {
+    animation: fade-in-up 0.7s ease-out both;
+}
+
+.modal-pop {
+    animation: modal-pop 0.35s ease-out;
+}
+
+/* Scroll-to-top button */
+#scroll-top-btn {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#scroll-top-btn.hidden-btn {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+#scroll-top-btn.visible-btn {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Nav styling */
+.nav-link-base {
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.nav-link-base:hover {
+    background-color: rgba(15, 23, 42, 0.85);
+    border-color: rgba(148, 163, 184, 0.5);
+}
+
+.nav-link-active {
+    background-image: radial-gradient(circle at top left, #FBBF24, #F97316);
+    color: #020617 !important;
+    border-color: rgba(248, 250, 252, 0.6) !important;
+    box-shadow:
+        0 10px 25px rgba(251, 191, 36, 0.4),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+}
+
+/* Tiny scroll indicator under hero */
+.scroll-indicator {
+    width: 22px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(148, 163, 184, 0.7);
+    position: relative;
+}
+
+.scroll-indicator-dot {
+    width: 6px;
+    height: 8px;
+    border-radius: 999px;
+    background-color: #e5e7eb;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7px;
+    animation: scroll-dot 1.6s ease-in-out infinite;
+}
