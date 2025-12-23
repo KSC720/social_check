@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Social Media Awareness Website",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
