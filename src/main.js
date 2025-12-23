@@ -323,26 +323,26 @@ function renderQuiz() {
             <!-- Question X of Y + tiny progress bar -->
             <div class="mb-3 flex items-center gap-3">
                 <div class="text-xs sm:text-sm text-slate-400 font-medium">
-                    Question <span class="text-amber-300">${qNum}</span>
+                    Question <span class="text-teal-300">${qNum}</span>
                     <span class="mx-0.5 text-slate-500">/</span>
-                    <span class="text-amber-300">${totalQuestions}</span>
+                    <span class="text-teal-300">${totalQuestions}</span>
                 </div>
                 <div class="flex-1 h-1.5 rounded-full bg-slate-800 overflow-hidden">
                     <div
-                        class="h-full rounded-full bg-gradient-to-r from-emerald-400 via-amber-400 to-red-400"
+                        class="h-full rounded-full bg-gradient-to-r from-emerald-400 via-teal-400 to-rose-400"
                         style="width: ${progressPercent}%;"
                     ></div>
                 </div>
             </div>
 
-            <p class="text-lg sm:text-xl font-semibold mb-4 text-amber-300">
+            <p class="text-lg sm:text-xl font-semibold mb-4 text-teal-300">
                 Q${qNum}: ${qData.q}
             </p>
             <div class="space-y-3">
                 ${qData.options.map(option => `
                     <label class="flex items-start p-3 bg-gray-900/60 rounded-xl cursor-pointer hover:bg-gray-800/80 transition border border-slate-700/70">
                         <input type="radio" name="q${qNum}" value="${option.value}" required
-                               class="mt-1 h-5 w-5 text-amber-500 focus:ring-amber-500 border-gray-600 bg-gray-900">
+                               class="mt-1 h-5 w-5 text-teal-500 focus:ring-amber-500 border-gray-600 bg-gray-900">
                         <span class="ml-3 text-gray-200 text-sm sm:text-base">${option.label}</span>
                     </label>
                 `).join('')}
@@ -414,7 +414,7 @@ window.submitQuiz = function () {
     }
 
     if (!allAnswered) {
-        finalWarning.className = 'mt-6 p-5 sm:p-6 rounded-2xl text-base sm:text-lg font-semibold border-l-4 bg-red-900/30 text-red-100 border-red-500 shadow-lg';
+        finalWarning.className = 'mt-6 p-5 sm:p-6 rounded-2xl text-base sm:text-lg font-semibold border-l-4 bg-rose-900/30 text-rose-100 border-rose-500 shadow-lg';
         finalWarning.innerHTML = `
             <div class="flex items-start gap-3">
                 <span class="text-3xl sm:text-4xl">🛑</span>
@@ -443,16 +443,16 @@ window.submitQuiz = function () {
 
     // 2. Display summary
     summaryDetails.innerHTML = `
-        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-amber-300">A Selections:</span> ${score.A}</div>
-        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-amber-300">B Selections:</span> ${score.B}</div>
-        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-amber-300">C Selections:</span> ${score.C}</div>
-        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-amber-300">D Selections:</span> ${score.D}</div>
-        <div class="col-span-2 p-2 rounded-md bg-amber-900/40 font-bold text-xl text-amber-200">Total High-Risk (C+D): ${totalCD} / ${quizQuestions.length}</div>
+        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-teal-300">A Selections:</span> ${score.A}</div>
+        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-teal-300">B Selections:</span> ${score.B}</div>
+        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-teal-300">C Selections:</span> ${score.C}</div>
+        <div class="p-2 rounded-md bg-gray-800/60"><span class="font-bold text-teal-300">D Selections:</span> ${score.D}</div>
+        <div class="col-span-2 p-2 rounded-md bg-teal-900/40 font-bold text-xl text-teal-200">Total High-Risk (C+D): ${totalCD} / ${quizQuestions.length}</div>
     `;
 
     // 3. Display final result/warning
     if (isHighlyAddicted) {
-        finalWarning.className = 'mt-6 p-5 sm:p-6 rounded-2xl text-base sm:text-lg font-semibold border-l-4 bg-red-900/30 text-red-100 border-red-500 shadow-lg';
+        finalWarning.className = 'mt-6 p-5 sm:p-6 rounded-2xl text-base sm:text-lg font-semibold border-l-4 bg-rose-900/30 text-rose-100 border-rose-500 shadow-lg';
         finalWarning.innerHTML = `
             <div class="flex items-start gap-3">
                 <span class="text-4xl animate-subtle-shake">🚨</span>
@@ -460,11 +460,11 @@ window.submitQuiz = function () {
                     <p class="font-bold text-lg sm:text-xl mb-1">Critical Alert: Your digital use may be seriously impacting you.</p>
                     <p class="font-normal text-sm sm:text-base text-gray-200 leading-relaxed">
                         Your answers show strong signs of mobile / social media addiction. This doesn’t mean you are weak or broken —
-                        it means your brain has been trained by apps that are <span class="font-semibold text-amber-300">built to be addictive</span>.
+                        it means your brain has been trained by apps that are <span class="font-semibold text-teal-300">built to be addictive</span>.
                     </p>
                     <ul class="mt-3 space-y-1.5 text-xs sm:text-sm font-normal text-gray-200">
-                        <li>• You are <span class="font-semibold text-amber-300">not alone</span> — millions of people feel stuck in the same loop.</li>
-                        <li>• Getting help is a sign of <span class="font-semibold text-amber-300">strength</span>, not failure.</li>
+                        <li>• You are <span class="font-semibold text-teal-300">not alone</span> — millions of people feel stuck in the same loop.</li>
+                        <li>• Getting help is a sign of <span class="font-semibold text-teal-300">strength</span>, not failure.</li>
                         <li>• With the right support, your focus, mood and relationships can improve step by step. 🌱</li>
                     </ul>
                     <p class="mt-3 text-xs sm:text-sm font-normal text-gray-200">
@@ -484,7 +484,7 @@ window.submitQuiz = function () {
                     <p class="font-bold text-lg sm:text-xl mb-1">Important Signal: You show moderate digital dependency.</p>
                     <p class="font-normal text-sm sm:text-base text-gray-200 leading-relaxed">
                         Your results suggest that your phone and social media are starting to affect your focus, mood or self-esteem.
-                        This is a <span class="font-semibold text-amber-300">great moment to take action</span> before it becomes heavier.
+                        This is a <span class="font-semibold text-teal-300">great moment to take action</span> before it becomes heavier.
                     </p>
                     <ul class="mt-3 space-y-1.5 text-xs sm:text-sm font-normal text-gray-200">
                         <li>• Try creating “phone-free zones” (bedroom, meals, first 30 minutes after waking up).</li>

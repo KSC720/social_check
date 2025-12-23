@@ -10,8 +10,8 @@ module.exports = {
                 sans: ['Inter', 'sans-serif'],
             },
             colors: {
-                primary: '#1D4ED8',
-                secondary: '#F59E0B',
+                primary: '#14B8A6', // Teal-500
+                secondary: '#6366F1', // Indigo-500
             },
             animation: {
                 'bg-orbit': 'bg-orbit 40s linear infinite alternate',
