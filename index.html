@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.onerror = function (msg, url, line) {
+            document.body.innerHTML = '<div style="background:white;color:red;padding:20px;font-size:24px;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;">ERROR: ' + msg + '<br>' + url + ':' + line + '</div>';
+        }
+    </script>
     <title>Social Dilemma Awareness | Digital Detox</title>
 
     <!-- Use Inter font -->
