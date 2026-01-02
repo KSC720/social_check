@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage('home');
     setupNavLinks();
     setupDonationRadios();
+    setupCustomAmountToggle();
+    setupSubjectOtherToggle();
+    setupProfessionalOtherToggle();
 
     // Testimonial Shuffle
     const grid = document.getElementById('testimonial-grid');
@@ -457,7 +460,7 @@ window.submitQuiz = function () {
             <div class="flex items-start gap-3">
                 <span class="text-4xl animate-subtle-shake">🚨</span>
                 <div>
-                    <p class="font-bold text-lg sm:text-xl mb-1">Critical Alert: Your digital use may be seriously impacting you.</p>
+                    <p class="font-bold text-lg sm:text-xl mb-1">Wake-up Call: Your phone habits are starting to control your life.</p>
                     <p class="font-normal text-sm sm:text-base text-gray-200 leading-relaxed">
                         Your answers show strong signs of mobile / social media addiction. This doesn’t mean you are weak or broken —
                         it means your brain has been trained by apps that are <span class="font-semibold text-teal-300">built to be addictive</span>.
@@ -468,7 +471,7 @@ window.submitQuiz = function () {
                         <li>• With the right support, your focus, mood and relationships can improve step by step. 🌱</li>
                     </ul>
                     <p class="mt-3 text-xs sm:text-sm font-normal text-gray-200">
-                        Consider talking to someone you trust, or reaching out to us for a personalised detox plan.
+                        Consider talking to someone you trust, or reaching out to us for your own plan to break free.
                         You don’t have to fight this battle alone. 💬💙
                     </p>
                 </div>
@@ -481,7 +484,7 @@ window.submitQuiz = function () {
             <div class="flex items-start gap-3">
                 <span class="text-3xl">💡</span>
                 <div>
-                    <p class="font-bold text-lg sm:text-xl mb-1">Important Signal: You show moderate digital dependency.</p>
+                    <p class="font-bold text-lg sm:text-xl mb-1">Be Careful: Your phone use is becoming a habit.</p>
                     <p class="font-normal text-sm sm:text-base text-gray-200 leading-relaxed">
                         Your results suggest that your phone and social media are starting to affect your focus, mood or self-esteem.
                         This is a <span class="font-semibold text-teal-300">great moment to take action</span> before it becomes heavier.
@@ -504,7 +507,7 @@ window.submitQuiz = function () {
             <div class="flex items-start gap-3">
                 <span class="text-3xl">✅</span>
                 <div>
-                    <p class="font-bold text-lg sm:text-xl mb-1">Healthy Digital Balance (for now) 🎉</p>
+                    <p class="font-bold text-lg sm:text-xl mb-1">Looking Good: You have a healthy balance right now 🎉</p>
                     <p class="font-normal text-sm sm:text-base text-gray-200 leading-relaxed">
                         Your answers suggest that you currently have a relatively healthy relationship with your phone and social media.
                         You seem able to set limits and stay grounded in real life.
@@ -534,32 +537,94 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMdtbwzI4ECi
 const RAZORPAY_KEY_ID = 'rzp_test_RoJWhxfpulKfOB'; // TEST key – use LIVE key in production
 
 function setupDonationRadios() {
-    const donationRadios = document.querySelectorAll('input[name="donation_amount"]');
+    const donationRadios = document.querySelectorAll('input[name="Voluntary Support"]');
     donationRadios.forEach(radio => {
         radio.addEventListener('change', () => {
-            const supportRadio = document.querySelector('input[name="engagement_type"][value="support_donation"]');
+            const supportRadio = document.querySelector('input[name="engagement_type"][value=""]');
             if (supportRadio) supportRadio.checked = true;
+
+            // Toggle custom amount field visibility
+            const customAmountWrapper = document.getElementById('custom-amount-wrapper');
+            if (customAmountWrapper) {
+                if (radio.id === 'amount-custom-radio') {
+                    customAmountWrapper.classList.remove('hidden');
+                    const input = document.getElementById('custom-amount-input');
+                    if (input) input.required = true;
+                } else {
+                    customAmountWrapper.classList.add('hidden');
+                    const input = document.getElementById('custom-amount-input');
+                    if (input) input.required = false;
+                }
+            }
         });
     });
 }
 
+function setupCustomAmountToggle() {
+    // This is mostly handled inside setupDonationRadios now, 
+    // but we can add more logic here if needed.
+}
+
+function setupSubjectOtherToggle() {
+    const subjectSelect = document.getElementById('subject');
+    const otherWrapper = document.getElementById('subject-other-wrapper');
+    const otherInput = document.getElementById('subject-other');
+
+    if (subjectSelect && otherWrapper && otherInput) {
+        subjectSelect.addEventListener('change', () => {
+            if (subjectSelect.value === 'other') {
+                otherWrapper.classList.remove('hidden');
+                otherInput.required = true;
+                otherInput.focus();
+            } else {
+                otherWrapper.classList.add('hidden');
+                otherInput.required = false;
+            }
+        });
+    }
+}
+
+function setupProfessionalOtherToggle() {
+    const profSelect = document.getElementById('professional');
+    const otherWrapper = document.getElementById('prof-other-wrapper');
+    const otherInput = document.getElementById('prof-other');
+
+    if (profSelect && otherWrapper && otherInput) {
+        profSelect.addEventListener('change', () => {
+            if (profSelect.value === 'other') {
+                otherWrapper.classList.remove('hidden');
+                otherInput.required = true;
+                otherInput.focus();
+            } else {
+                otherWrapper.classList.add('hidden');
+                otherInput.required = false;
+            }
+        });
+    }
+}
+
 function getPaymentAmountRupees(engagementType) {
-    if (engagementType === 'support_donation') {
-        const donationChoice = document.querySelector('input[name="donation_amount"]:checked');
+    if (engagementType === '') {
+        const donationChoice = document.querySelector('input[name="Voluntary Support"]:checked');
         if (donationChoice) {
+            if (donationChoice.value === 'custom') {
+                const customInput = document.getElementById('custom-amount-input');
+                const val = parseInt(customInput?.value, 10);
+                return isNaN(val) ? 0 : val;
+            }
             const value = parseInt(donationChoice.value, 10);
             return isNaN(value) ? 0 : value;
         }
         return 0;
     } else if (engagementType === 'consult_1_1') {
-        return 999;
+        return 1499;
     }
     return 0;
 }
 
 function getPaymentDescription(engagementType) {
-    if (engagementType === 'support_donation') {
-        return 'Support / Donation to Digital Detox project';
+    if (engagementType === '') {
+        return 'Fuel the Digital Detox Mission';
     } else if (engagementType === 'consult_1_1') {
         return '1:1 Mobile/Screen Addiction Consultation';
     }
@@ -685,6 +750,17 @@ window.handleContactAndPayment = async function (event) {
     const emailValue = (form.querySelector('#email')?.value || '').trim();
     const phoneValue = (form.querySelector('#phone')?.value || '').trim();
 
+    // Determine final subject and professional info
+    let subjectValue = (form.querySelector('#subject')?.value || '');
+    if (subjectValue === 'other') {
+        subjectValue = (form.querySelector('#subject-other')?.value || '').trim() || 'Other';
+    }
+
+    let professionalValue = (form.querySelector('#professional')?.value || '');
+    if (professionalValue === 'other') {
+        professionalValue = (form.querySelector('#prof-other')?.value || '').trim() || 'Other Profession';
+    }
+
     // Contact only – no payment
     if (engagementType === 'contact_only') {
         setContactButtonLoading(true, 'Sending your message...');
@@ -696,6 +772,8 @@ window.handleContactAndPayment = async function (event) {
 
         try {
             await sendFormToGoogleSheet(form, {
+                subject: subjectValue,
+                professional: professionalValue,
                 engagement_type: 'contact_only',
                 payment_status: 'NO_PAYMENT',
                 payment_amount: 0,
@@ -759,6 +837,8 @@ window.handleContactAndPayment = async function (event) {
 
             try {
                 await sendFormToGoogleSheet(form, {
+                    subject: subjectValue,
+                    professional: professionalValue,
                     engagement_type: engagementType,
                     payment_status: 'PAID_TEST',
                     payment_amount: amountRupees,
