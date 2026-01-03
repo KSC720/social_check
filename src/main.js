@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavLinks();
     setupDonationRadios();
     setupCustomAmountToggle();
-    setupSubjectOtherToggle();
+    setupSubjectUI();
     setupProfessionalOtherToggle();
 
     // Testimonial Shuffle
@@ -565,22 +565,44 @@ function setupCustomAmountToggle() {
     // but we can add more logic here if needed.
 }
 
-function setupSubjectOtherToggle() {
+function setupSubjectUI() {
     const subjectSelect = document.getElementById('subject');
     const otherWrapper = document.getElementById('subject-other-wrapper');
     const otherInput = document.getElementById('subject-other');
+    const messageTextarea = document.getElementById('message');
 
-    if (subjectSelect && otherWrapper && otherInput) {
+    const placeholders = {
+        'detox-consultation': "What are your main goals for this detox? E.g., improved sleep, more focus at work...",
+        'mobile-addiction': "Tell us about the apps you struggle with most and how they affect your daily life...",
+        'teen-mobile-addiction': "Describe your teen's behavior with their phone and your main concerns as a parent...",
+        'kids-screen-issue': "How much screen time is your child currently getting? What behavioral changes are you seeing?",
+        'screen-time-concern': "How many hours a day are you spending on your screen? Which apps take up most of your time?",
+        'quiz-followup': "What was your score? Let us know if any specific quiz question really hit home for you...",
+        'general-inquiry': "How can we help you today? Please share any specific questions or requests...",
+        'other': "Describe your specific situation or request in detail so we can help best..."
+    };
+
+    if (subjectSelect) {
         subjectSelect.addEventListener('change', () => {
-            if (subjectSelect.value === 'other') {
-                otherWrapper.classList.remove('hidden');
-                otherInput.required = true;
-                otherInput.focus();
-            } else {
-                otherWrapper.classList.add('hidden');
-                otherInput.required = false;
+            // Placeholder logic
+            if (messageTextarea && placeholders[subjectSelect.value]) {
+                messageTextarea.placeholder = placeholders[subjectSelect.value];
+            }
+
+            // "Other" toggle logic
+            if (otherWrapper && otherInput) {
+                if (subjectSelect.value === 'other') {
+                    otherWrapper.classList.remove('hidden');
+                    otherInput.required = true;
+                    otherInput.focus();
+                } else {
+                    otherWrapper.classList.add('hidden');
+                    otherInput.required = false;
+                }
             }
         });
+        // Set initial placeholder
+        subjectSelect.dispatchEvent(new Event('change'));
     }
 }
 
@@ -631,7 +653,9 @@ function getPaymentDescription(engagementType) {
     return 'Digital Detox Support';
 }
 
-function setContactButtonLoading(isLoading, labelText) {
+let loadingTextTimeout = null;
+
+function setContactButtonLoading(isLoading, initialText, subjectKey = 'general-inquiry') {
     const submitBtn = document.getElementById('contact-submit-btn');
     const submitText = document.getElementById('contact-submit-text');
     const spinner = document.getElementById('contact-loading-spinner');
@@ -641,9 +665,44 @@ function setContactButtonLoading(isLoading, labelText) {
     if (isLoading) {
         submitBtn.disabled = true;
         submitBtn.classList.add('opacity-90', 'cursor-not-allowed');
-        submitText.textContent = labelText || 'Please wait...';
         spinner.classList.remove('hidden');
+
+        const subjectAwareMessages = {
+            'detox-consultation': "Mapping out your personalized detox path...",
+            'mobile-addiction': "Preparing strategies to break the scroll...",
+            'teen-mobile-addiction': "Building a healthier future for your teen...",
+            'kids-screen-issue': "Focusing on a balanced childhood...",
+            'screen-time-concern': "Calculating a more focused schedule for you...",
+            'quiz-followup': "Analyzing your quiz insights...",
+            'general-inquiry': "Connecting to the detox mission..."
+        };
+
+        const messages = [
+            initialText || subjectAwareMessages[subjectKey] || "Setting the foundation for your digital balance...",
+            "Safeguarding your privacy and your peace...",
+            "Almost there—thank you for choosing yourself...",
+            "Wrapping things up gently..."
+        ];
+
+        let index = 0;
+        const rotateText = () => {
+            if (!isLoading) return;
+            submitText.textContent = messages[index];
+
+            // Dwell longer on the emotional message
+            const isEmotionalMessage = messages[index].includes("choosing yourself");
+            const duration = isEmotionalMessage ? 5000 : 2000;
+
+            index = (index + 1) % messages.length;
+            loadingTextTimeout = setTimeout(rotateText, duration);
+        };
+
+        clearTimeout(loadingTextTimeout);
+        rotateText();
+
     } else {
+        clearTimeout(loadingTextTimeout);
+        isLoading = false;
         submitBtn.disabled = false;
         submitBtn.classList.remove('opacity-90', 'cursor-not-allowed');
         submitText.textContent = 'Send Details / Continue';
@@ -763,7 +822,8 @@ window.handleContactAndPayment = async function (event) {
 
     // Contact only – no payment
     if (engagementType === 'contact_only') {
-        setContactButtonLoading(true, 'Securing your digital detox request...');
+        const subjectKey = form.querySelector('#subject')?.value || 'general-inquiry';
+        setContactButtonLoading(true, null, subjectKey);
         if (feedbackDiv) {
             feedbackDiv.classList.remove('hidden');
             feedbackDiv.className = 'mt-4 p-3 rounded-lg text-center bg-blue-900/40 text-blue-300';
@@ -835,7 +895,8 @@ window.handleContactAndPayment = async function (event) {
                 feedbackDiv.innerHTML = `✅ Payment successful (TEST MODE). Payment ID: ${response.razorpay_payment_id || ''}`;
             }
 
-            setContactButtonLoading(true, 'Finalizing your mission details...');
+            const subjectKey = form.querySelector('#subject')?.value || 'general-inquiry';
+            setContactButtonLoading(true, null, subjectKey);
             try {
                 // AWAIT SYNC: Ensure 100% data reliability before showing success
                 await sendFormToGoogleSheet(form, {
