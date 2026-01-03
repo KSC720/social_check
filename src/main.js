@@ -655,7 +655,7 @@ async function sendFormToGoogleSheet(form, extraFields) {
     const formData = new FormData(form);
     if (extraFields && typeof extraFields === 'object') {
         Object.entries(extraFields).forEach(([key, value]) => {
-            formData.append(key, value);
+            formData.set(key, value);
         });
     }
 
@@ -763,11 +763,11 @@ window.handleContactAndPayment = async function (event) {
 
     // Contact only – no payment
     if (engagementType === 'contact_only') {
-        setContactButtonLoading(true, 'Sending your message...');
+        setContactButtonLoading(true, 'Securing your digital detox request...');
         if (feedbackDiv) {
             feedbackDiv.classList.remove('hidden');
             feedbackDiv.className = 'mt-4 p-3 rounded-lg text-center bg-blue-900/40 text-blue-300';
-            feedbackDiv.innerHTML = 'Sending your message... Please wait...';
+            feedbackDiv.innerHTML = 'Connecting to our detox mission... Please wait...';
         }
 
         try {
@@ -782,7 +782,7 @@ window.handleContactAndPayment = async function (event) {
 
             if (feedbackDiv) {
                 feedbackDiv.className = 'mt-4 p-3 rounded-lg text-center bg-green-900/40 text-green-300';
-                feedbackDiv.innerHTML = '✅ Success! Your message has been received. We will get back to you soon.';
+                feedbackDiv.innerHTML = '✅ Success! Your mission starts here.';
             }
 
             showSuccessModal(nameValue);
@@ -835,7 +835,9 @@ window.handleContactAndPayment = async function (event) {
                 feedbackDiv.innerHTML = `✅ Payment successful (TEST MODE). Payment ID: ${response.razorpay_payment_id || ''}`;
             }
 
+            setContactButtonLoading(true, 'Finalizing your mission details...');
             try {
+                // AWAIT SYNC: Ensure 100% data reliability before showing success
                 await sendFormToGoogleSheet(form, {
                     subject: subjectValue,
                     professional: professionalValue,

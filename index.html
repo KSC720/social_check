@@ -711,6 +711,12 @@
                                         <option value="general-inquiry">General Inquiry</option>
                                         <option value="other">Other...</option>
                                     </select>
+                                    <div id="subject-other-wrapper" class="hidden mt-4">
+                                        <label for="subject-other" class="form-label">Specify Subject <span
+                                                class="text-rose-400">*</span></label>
+                                        <input type="text" id="subject-other" name="subject_other" class="form-input"
+                                            placeholder="Enter subject">
+                                    </div>
                                 </div>
                                 <div>
                                     <label for="professional" class="form-label">Professional Background <span
@@ -726,22 +732,12 @@
                                         <option value="corporate-employee">Corporate Employee</option>
                                         <option value="other">Other...</option>
                                     </select>
-                                </div>
-                            </div>
-
-                            <!-- "Other" inputs for Subject and Professional (Dynamic) -->
-                            <div class="grid sm:grid-cols-2 gap-6 mt-4">
-                                <div id="subject-other-wrapper" class="hidden">
-                                    <label for="subject-other" class="form-label">Specify Subject <span
-                                            class="text-rose-400">*</span></label>
-                                    <input type="text" id="subject-other" name="subject_other" class="form-input"
-                                        placeholder="Enter subject">
-                                </div>
-                                <div id="prof-other-wrapper" class="hidden">
-                                    <label for="prof-other" class="form-label">Specify Profession <span
-                                            class="text-rose-400">*</span></label>
-                                    <input type="text" id="prof-other" name="prof_other" class="form-input"
-                                        placeholder="Enter profession">
+                                    <div id="prof-other-wrapper" class="hidden mt-4">
+                                        <label for="prof-other" class="form-label">Specify Profession <span
+                                                class="text-rose-400">*</span></label>
+                                        <input type="text" id="prof-other" name="prof_other" class="form-input"
+                                            placeholder="Enter profession">
+                                    </div>
                                 </div>
                             </div>
 
