@@ -654,6 +654,7 @@ function getPaymentDescription(engagementType) {
 }
 
 let loadingTextTimeout = null;
+let isActuallyLoading = false;
 
 function setContactButtonLoading(isLoading, initialText, subjectKey = 'general-inquiry') {
     const submitBtn = document.getElementById('contact-submit-btn');
@@ -663,6 +664,7 @@ function setContactButtonLoading(isLoading, initialText, subjectKey = 'general-i
     if (!submitBtn || !submitText || !spinner) return;
 
     if (isLoading) {
+        isActuallyLoading = true;
         submitBtn.disabled = true;
         submitBtn.classList.add('opacity-90', 'cursor-not-allowed');
         spinner.classList.remove('hidden');
@@ -686,7 +688,7 @@ function setContactButtonLoading(isLoading, initialText, subjectKey = 'general-i
 
         let index = 0;
         const rotateText = () => {
-            if (!isLoading) return;
+            if (!isActuallyLoading) return;
             submitText.textContent = messages[index];
 
             // Dwell longer on the emotional message
@@ -701,8 +703,8 @@ function setContactButtonLoading(isLoading, initialText, subjectKey = 'general-i
         rotateText();
 
     } else {
+        isActuallyLoading = false;
         clearTimeout(loadingTextTimeout);
-        isLoading = false;
         submitBtn.disabled = false;
         submitBtn.classList.remove('opacity-90', 'cursor-not-allowed');
         submitText.textContent = 'Send Details / Continue';
@@ -755,7 +757,7 @@ function openRazorpayCheckout(config) {
             contact: phoneValue
         },
         theme: {
-            color: '#F59E0B'
+            color: '#14B8A6'
         },
         handler: function (response) {
             if (typeof onSuccess === 'function') {
